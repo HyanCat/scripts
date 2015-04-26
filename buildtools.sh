@@ -6,11 +6,12 @@ yum install -y gcc gcc-c++
 
 ###################################################
 
-NGINX_LINK=http://nginx.org/download/nginx-1.7.11.tar.gz
+NGINX_LINK=http://nginx.org/download/nginx-1.8.0.tar.gz
 ZLIB_LINK=http://zlib.net/zlib-1.2.8.tar.gz
-PHP_LINK=http://cn2.php.net/distributions/php-5.6.7.tar.gz
-MYSQL_LINK=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.23.tar.gz
-NODE_LINK=http://nodejs.org/dist/v0.12.1/node-v0.12.1.tar.gz
+PHP_LINK=http://cn2.php.net/distributions/php-5.6.8.tar.gz
+MYSQL_LINK=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.24.tar.gz
+REDIS_LINK=http://download.redis.io/releases/redis-3.0.0.tar.gz
+NODE_LINK=http://nodejs.org/dist/v0.12.2/node-v0.12.2.tar.gz
 
 
 DEST_DIR=/usr/local/soft
@@ -24,12 +25,12 @@ cd source_code
 wget $NGINX_LINK
 wget $ZLIB_LINK
 
-tar -zxf nginx-1.7.11.tar.gz
+tar -zxf nginx-1.8.0.tar.gz
 tar -zxf zlib-1.2.8.tar.gz
 
 mv zlib-1.2.8 zlib
 
-cd nginx-1.7.11
+cd nginx-1.8.0
 yum install -y openssl-devel pcre-devel
 ./configure --prefix=$DEST_DIR/nginx --with-http_ssl_module --with-pcre --with-zlib=../zlib
 make
@@ -87,9 +88,9 @@ echo "PATH=\$PATH:$DEST_DIR/nginx/sbin" >> ~/.bash_profile
 ###################################################
 # PHP
 wget $PHP_LINK
-tar -zxf php-5.6.7.tar.gz
+tar -zxf php-5.6.8.tar.gz
 
-cd php-5.6.7
+cd php-5.6.8
 
 rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 
@@ -110,9 +111,9 @@ echo "PATH=\$PATH:$DEST_DIR/php/bin:$DEST_DIR/php/sbin" >> ~/.bash_profile
 ###################################################
 # MYSQL
 wget $MYSQL_LINK
-tar -zxf mysql-5.6.23.tar.gz
+tar -zxf mysql-5.6.24.tar.gz
 
-cd mysql-5.6.23
+cd mysql-5.6.24
 yum install -y cmake ncurses-devel
 yum install -y perl-Module-Install
 
@@ -141,12 +142,24 @@ cd -
 
 echo "PATH=\$PATH:$DEST_DIR/mysql/bin" >> ~/.bash_profile
 
+
+###################################################
+# REDIS
+
+wget $REDIS_LINK
+tar -zxf redis-3.0.0.tar.gz
+cd ./redis-3.0.0
+make
+mv redis-3.0.0 $DEST_DIR/redis
+echo "PATH=\$PATH:$DEST_DIR/redis/src" >> ~/.bash_profile
+
+
 ###################################################
 # NODEJS
 
 wget $NODE_LINK
-tar -zxf node-v0.12.1.tar.gz
-cd node-v0.12.1
+tar -zxf node-v0.12.2.tar.gz
+cd node-v0.12.2
 ./configure --prefix=$DEST_DIR/nodejs
 make
 make install
