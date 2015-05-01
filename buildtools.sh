@@ -161,7 +161,7 @@ echo "PATH=\$PATH:$DEST_DIR/redis/src" >> ~/.bash_profile
 wget $MEMCACHED_LINK
 tar -zxf memcached-1.4.24.tar.gz
 cd ./memcached-1.4.24
-yum install libevent-devel
+yum install -y libevent-devel
 ./configure --prefix=$DEST_DIR/memcached
 make
 make install
@@ -178,10 +178,42 @@ cd node-v0.12.2
 ./configure --prefix=$DEST_DIR/nodejs
 make
 make install
-
+cd -
 echo "PATH=\$PATH:$DEST_DIR/nodejs/bin" >> ~/.bash_profile
 
 
 echo "export PATH" >> ~/.bash_profile
+source ~/.bash_profile
+
+
+###################################################
+# PHP-EXTENSIONS
+
+## memcached
+yum install -y libmemcached-devel
+
+PHP_MEMCACHED=http://pecl.php.net/get/memcached-2.2.0.tgz
+wget $PHP_MEMCACHED
+tar -zxf memcached-2.2.0.tgz
+cd ./memcached-2.2.0
+phpize
+./configure
+make
+make install
+cd -
+
+## imagick
+yum install -y ImageMagick-devel
+
+PHP_IMAGICK=http://pecl.php.net/get/imagick-3.1.2.tgz
+wget $PHP_IMAGICK
+tar -zxf imagick-3.1.2.tgz
+cd ./imagick-3.1.2
+phpize
+./configure
+make
+make install
+cd -
+
 
 echo "all done!"
