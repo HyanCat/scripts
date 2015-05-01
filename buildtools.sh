@@ -75,7 +75,7 @@ http {
     gzip  on;
 
 
-    include $DEST_DIR/nginx/conf.d/*.conf;
+    include $DEST_DIR/nginx/conf/conf.d/*.conf;
 
 }
 
@@ -189,6 +189,7 @@ source ~/.bash_profile
 ###################################################
 # PHP-EXTENSIONS
 
+yum install -y autoconf
 ## memcached
 yum install -y libmemcached-devel
 
