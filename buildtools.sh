@@ -11,6 +11,7 @@ ZLIB_LINK=http://zlib.net/zlib-1.2.8.tar.gz
 PHP_LINK=http://cn2.php.net/distributions/php-5.6.8.tar.gz
 MYSQL_LINK=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.24.tar.gz
 REDIS_LINK=http://download.redis.io/releases/redis-3.0.0.tar.gz
+MEMCACHED_LINK=http://www.memcached.org/files/memcached-1.4.24.tar.gz
 NODE_LINK=http://nodejs.org/dist/v0.12.2/node-v0.12.2.tar.gz
 
 
@@ -150,9 +151,23 @@ wget $REDIS_LINK
 tar -zxf redis-3.0.0.tar.gz
 cd ./redis-3.0.0
 make
+cd -
 mv redis-3.0.0 $DEST_DIR/redis
 echo "PATH=\$PATH:$DEST_DIR/redis/src" >> ~/.bash_profile
 
+
+###################################################
+# MEMCACHED
+wget $MEMCACHED_LINK
+tar -zxf memcached-1.4.24.tar.gz
+cd ./memcached-1.4.24
+yum install libevent-devel
+./configure --prefix=$DEST_DIR/memcached
+make
+make install
+cd -
+echo "PATH=\$PATH:$DEST_DIR/memcached/bin" >> ~/.bash_profile
+# memcached -d -m 256 -u root -l 127.0.0.1 -p 12345 -c 1024 -P /tmp/memcached.pid
 
 ###################################################
 # NODEJS
