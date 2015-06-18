@@ -8,11 +8,11 @@ yum install -y gcc gcc-c++
 
 NGINX_LINK=http://nginx.org/download/nginx-1.8.0.tar.gz
 ZLIB_LINK=http://zlib.net/zlib-1.2.8.tar.gz
-PHP_LINK=http://cn2.php.net/distributions/php-5.6.8.tar.gz
-MYSQL_LINK=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.24.tar.gz
-REDIS_LINK=http://download.redis.io/releases/redis-3.0.0.tar.gz
+PHP_LINK=http://cn2.php.net/distributions/php-5.6.10.tar.gz
+MYSQL_LINK=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.25.tar.gz
+REDIS_LINK=http://download.redis.io/redis-stable.tar.gz
 MEMCACHED_LINK=http://www.memcached.org/files/memcached-1.4.24.tar.gz
-NODE_LINK=http://nodejs.org/dist/v0.12.2/node-v0.12.2.tar.gz
+NODE_LINK=http://nodejs.org/dist/v0.12.4/node-v0.12.4.tar.gz
 
 
 DEST_DIR=/usr/local/soft
@@ -89,9 +89,9 @@ echo "PATH=\$PATH:$DEST_DIR/nginx/sbin" >> ~/.bash_profile
 ###################################################
 # PHP
 wget $PHP_LINK
-tar -zxf php-5.6.8.tar.gz
+tar -zxf php-5.6.10.tar.gz
 
-cd php-5.6.8
+cd php-5.6.10
 
 rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 
@@ -112,9 +112,9 @@ echo "PATH=\$PATH:$DEST_DIR/php/bin:$DEST_DIR/php/sbin" >> ~/.bash_profile
 ###################################################
 # MYSQL
 wget $MYSQL_LINK
-tar -zxf mysql-5.6.24.tar.gz
+tar -zxf mysql-5.6.25.tar.gz
 
-cd mysql-5.6.24
+cd mysql-5.6.25
 yum install -y cmake ncurses-devel
 yum install -y perl-Module-Install
 
@@ -148,11 +148,11 @@ echo "PATH=\$PATH:$DEST_DIR/mysql/bin" >> ~/.bash_profile
 # REDIS
 
 wget $REDIS_LINK
-tar -zxf redis-3.0.0.tar.gz
-cd ./redis-3.0.0
+tar -zxf redis-stable.tar.gz
+cd ./redis-stable
 make
 cd -
-mv redis-3.0.0 $DEST_DIR/redis
+mv redis-stable $DEST_DIR/redis
 echo "PATH=\$PATH:$DEST_DIR/redis/src" >> ~/.bash_profile
 
 
@@ -173,8 +173,8 @@ echo "PATH=\$PATH:$DEST_DIR/memcached/bin" >> ~/.bash_profile
 # NODEJS
 
 wget $NODE_LINK
-tar -zxf node-v0.12.2.tar.gz
-cd node-v0.12.2
+tar -zxf node-v0.12.4.tar.gz
+cd node-v0.12.4
 ./configure --prefix=$DEST_DIR/nodejs
 make
 make install
