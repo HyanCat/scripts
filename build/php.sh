@@ -5,17 +5,17 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-
-PHP_LINK=http://cn2.php.net/distributions/php-5.6.10.tar.gz
+PHP_VERSION=5.6.11
+PHP_LINK=http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz
 
 
 ###################################################
 # PHP
 
 wget $PHP_LINK
-tar -zxf php-5.6.10.tar.gz
+tar -zxf php-$PHP_VERSION.tar.gz
 
-cd php-5.6.10
+cd php-$PHP_VERSION
 
 rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 

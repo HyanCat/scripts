@@ -5,15 +5,15 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-
-NODE_LINK=http://nodejs.org/dist/v0.12.4/node-v0.12.4.tar.gz
+NODE_VERSION=v0.12.7
+NODE_LINK=http://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION.tar.gz
 
 ###################################################
 # NODEJS
 
 wget $NODE_LINK
-tar -zxf node-v0.12.4.tar.gz
-cd node-v0.12.4
+tar -zxf node-$NODE_VERSION.tar.gz
+cd node-$NODE_VERSION
 ./configure --prefix=$DEST_DIR/nodejs
 make
 make install

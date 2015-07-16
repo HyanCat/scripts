@@ -5,17 +5,17 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-
-MYSQL_LINK=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.25.tar.gz
+MYSQL_VERSION=5.6.25
+MYSQL_LINK=http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-$MYSQL_VERSION.tar.gz
 
 
 ###################################################
 # MYSQL
 
 wget $MYSQL_LINK
-tar -zxf mysql-5.6.25.tar.gz
+tar -zxf mysql-$MYSQL_VERSION.tar.gz
 
-cd mysql-5.6.25
+cd mysql-$MYSQL_VERSION
 yum install -y cmake ncurses-devel
 yum install -y perl-Module-Install
 

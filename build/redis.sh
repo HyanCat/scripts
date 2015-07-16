@@ -5,15 +5,16 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-REDIS_LINK=http://download.redis.io/redis-stable.tar.gz
+REDIS_VERSION=stable
+REDIS_LINK=http://download.redis.io/redis-$REDIS_VERSION.tar.gz
 
 ###################################################
 # REDIS
 
 wget $REDIS_LINK
-tar -zxf redis-stable.tar.gz
-cd ./redis-stable
+tar -zxf redis-$REDIS_VERSION.tar.gz
+cd ./redis-$REDIS_VERSION
 make
 cd -
-mv redis-stable $DEST_DIR/redis
+mv redis-$REDIS_VERSION $DEST_DIR/redis
 echo "PATH=\$PATH:$DEST_DIR/redis/src" >> ~/.bashrc

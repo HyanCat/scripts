@@ -5,15 +5,15 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-
-MEMCACHED_LINK=http://www.memcached.org/files/memcached-1.4.24.tar.gz
+MEMCACHED_VERSION=1.4.24
+MEMCACHED_LINK=http://www.memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz
 
 ###################################################
 # MEMCACHED
 
 wget $MEMCACHED_LINK
-tar -zxf memcached-1.4.24.tar.gz
-cd ./memcached-1.4.24
+tar -zxf memcached-$MEMCACHED_VERSION.tar.gz
+cd ./memcached-$MEMCACHED_VERSION
 yum install -y libevent-devel
 ./configure --prefix=$DEST_DIR/memcached
 make

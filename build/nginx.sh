@@ -5,9 +5,10 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-
-NGINX_LINK=http://nginx.org/download/nginx-1.8.0.tar.gz
-ZLIB_LINK=http://zlib.net/zlib-1.2.8.tar.gz
+NGINX_VERSION=1.8.0
+ZLIB_VERSION=1.2.8
+NGINX_LINK=http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz
+ZLIB_LINK=http://zlib.net/zlib-$ZLIB_VERSION.tar.gz
 
 ###################################################
 # NGINX
@@ -15,12 +16,12 @@ ZLIB_LINK=http://zlib.net/zlib-1.2.8.tar.gz
 wget $NGINX_LINK
 wget $ZLIB_LINK
 
-tar -zxf nginx-1.8.0.tar.gz
-tar -zxf zlib-1.2.8.tar.gz
+tar -zxf nginx-$NGINX_VERSION.tar.gz
+tar -zxf zlib-$ZLIB_VERSION.tar.gz
 
-mv zlib-1.2.8 zlib
+mv zlib-$ZLIB_VERSION zlib
 
-cd nginx-1.8.0
+cd nginx-$NGINX_VERSION
 yum install -y openssl-devel pcre-devel
 ./configure --prefix=$DEST_DIR/nginx --with-http_ssl_module --with-pcre --with-zlib=../zlib
 make
