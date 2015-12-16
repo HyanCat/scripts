@@ -5,8 +5,8 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-NODE_VERSION=v0.12.7
-NODE_LINK=http://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION.tar.gz
+NODE_VERSION=v5.2.0
+NODE_LINK=https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION.tar.gz
 
 ###################################################
 # NODEJS
