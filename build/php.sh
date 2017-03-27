@@ -5,7 +5,7 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-PHP_VERSION=7.0.0
+PHP_VERSION=7.1.3
 PHP_LINK=http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz
 
 
@@ -17,7 +17,7 @@ tar -zxf php-$PHP_VERSION.tar.gz
 
 cd php-$PHP_VERSION
 
-rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+rpm -ivh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
 
 yum install -y libxml2-devel bzip2-devel libcurl-devel libpng-devel freetype-devel libc-client-devel libjpeg-devel libmcrypt-devel openssl-devel
 ln -s /usr/lib64/libc-client.so /usr/lib/
