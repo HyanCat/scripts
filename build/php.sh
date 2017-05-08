@@ -5,7 +5,7 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-PHP_VERSION=7.1.3
+PHP_VERSION=7.1.4
 PHP_LINK=http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz
 
 
