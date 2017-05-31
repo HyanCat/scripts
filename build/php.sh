@@ -2,10 +2,10 @@
 
 DEST_DIR=$1
 if [ ! $DEST_DIR ]; then
-	DEST_DIR=/usr/local/soft
+    DEST_DIR=/usr/local/soft
 fi
 
-PHP_VERSION=7.1.4
+PHP_VERSION=7.1.5
 PHP_LINK=http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz
 
 
@@ -32,3 +32,12 @@ cp php-fpm.conf.default php-fpm.conf
 cd -
 
 echo "PATH=\$PATH:$DEST_DIR/php/bin:$DEST_DIR/php/sbin" >> ~/.bashrc
+
+## composer
+
+source ~/.bashrc
+wget https://getcomposer.org/composer.phar -O /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+
+echo "PHP install done."
+
