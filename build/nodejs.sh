@@ -5,17 +5,16 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
+mkdir -p $DEST_DIR
+
 NODE_VERSION=v8.2.1
-NODE_LINK=https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION.tar.gz
+NODE_LINK=https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz
 
 ###################################################
 # NODEJS
 
 wget $NODE_LINK
-tar -zxf node-$NODE_VERSION.tar.gz
-cd node-$NODE_VERSION
-./configure --prefix=$DEST_DIR/nodejs
-make
-make install
-cd -
-echo "PATH=\$PATH:$DEST_DIR/nodejs/bin" >> ~/.bashrc
+tar -xf node-$NODE_VERSION-linux-x64.tar.xz
+mv node-$NODE_VERSION-linux-x64 $DEST_DIR/node
+
+echo "PATH=\$PATH:$DEST_DIR/node/bin" >> ~/.bashrc
