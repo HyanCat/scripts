@@ -2,12 +2,12 @@
 
 DEST_DIR=$1
 if [ ! $DEST_DIR ]; then
-	DEST_DIR=/usr/local/soft
+    DEST_DIR=/usr/local/soft
 fi
 
 mkdir -p $DEST_DIR
 
-NODE_VERSION=v8.2.1
+NODE_VERSION=v9.2.0
 NODE_LINK=https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz
 
 ###################################################
