@@ -5,8 +5,8 @@ if [ ! $DEST_DIR ]; then
 	DEST_DIR=/usr/local/soft
 fi
 
-NGINX_VERSION=1.8.0
-ZLIB_VERSION=1.2.8
+NGINX_VERSION=1.13.8
+ZLIB_VERSION=1.2.11
 NGINX_LINK=http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz
 ZLIB_LINK=http://zlib.net/zlib-$ZLIB_VERSION.tar.gz
 
