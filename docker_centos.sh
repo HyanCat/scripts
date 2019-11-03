@@ -22,7 +22,7 @@ systemctl start docker
 
 ## install docker-compose
 
-DC_VERSION=1.23.2
+DC_VERSION=1.24.1
 
 curl -L https://github.com/docker/compose/releases/download/$DC_VERSION/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
